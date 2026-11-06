@@ -1,14 +1,62 @@
-# Cable
+<!-- From here to "What you need" mirrors site/index.html: same words, same
+     order, same two animations (copied into docs/). Change them together. -->
 
-A small macOS app that blocks apps and websites on your own iPhone, using
-Apple's own supervision mechanism through Apple Configurator's `cfgutil`.
+# <img src="site/icon.png" width="30" alt=""> Cable
 
-**Website: [cableblocker.com](https://cableblocker.com)** · The site lives in
-[`site/`](site/) and deploys to Vercel on every push to `main`.
+**Cable is the most serious way to block apps and sites on your iPhone.**
 
-The app was called Bottle until v0.1.1. Everything is the same tool with a
-different name; see [Renamed from Bottle](#renamed-from-bottle) for what that
-means if you used a build from before.
+How? It uses the same Apple tool that businesses use to block certain apps on
+their employees’ phones.
+
+There is no escape hatch like you have with Apple Screen Time and blocking apps.
+
+> *“I have not had Instagram on my phone the last year because I literally
+> cannot install it anymore.”*
+>
+> — Logan
+
+**[Download for Mac](https://github.com/lcvaleski/cable/releases/latest/download/Cable.dmg)**
+
+MIT licensed. Every line is in this repo.
+[cableblocker.com](https://cableblocker.com) ·
+[Releases](https://github.com/lcvaleski/cable/releases)
+
+## Free
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/free-dark.svg">
+  <img src="docs/free.svg" width="440" alt="A person plugs an iPhone into a Mac and Instagram disappears from it. They walk off and spend the day outside with friends. They walk back, plug in again, and the app returns.">
+</picture>
+
+Plug in. Pick the apps. Go about your day. Plug in again and it's back.
+
+## Paid
+
+One time payment!
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="docs/paid-dark.svg">
+  <img src="docs/paid.svg" width="440" alt="Instagram is gone from the phone and your Mac can no longer undo it. You ask from the phone, a timer counts down, the password arrives from Cable, you type it in and the app comes back.">
+</picture>
+
+Even your Mac can't undo it. Ask, from the phone. Wait the delay you chose. The
+password arrives. Type it in and it's back.
+
+## What you need
+
+- A Mac on macOS 14 or later, and a cable.
+- [Apple Configurator](https://apps.apple.com/app/id1037126344), free on the Mac
+  App Store.
+- An iPhone you can set up once. Apple only allows this kind of blocking on a
+  supervised phone, and a phone can only become supervised while it's freshly
+  erased. Cable backs it up, erases it and restores it for you;
+  [What survives the erase](#what-survives-the-erase) says exactly what comes
+  back. That setup is still marked Experimental in the app; see
+  [Not yet verified](#not-yet-verified).
+
+---
+
+Everything below is for people reading or building the code.
 
 ## What it does
 
@@ -109,11 +157,14 @@ Cable/
     IdentitySetupView.swift      pick a Configurator keychain key or open a .p12
     LockViews.swift              lock sheet, locked screen, countdown, QR, copyable link
     LogView.swift                raw cfgutil output, copyable
-CableTests/                      parsing, profile building, suggestions (33 tests)
+CableTests/                      parsing, profile building, suggestions
 packaging/                       DMG background + dmgbuild settings + icon generator
 scripts/release.sh               build → sign → notarize → DMG → appcast
 site/                            cableblocker.com: landing page, lock pages, lock API
+docs/                            the site's two animations as standalone SVGs, for this README
 ```
+
+The site deploys to Vercel on every push to `main`.
 
 There is no sidebar: people connect one iPhone, so the device lives in the
 toolbar and the window is the task at hand.
@@ -288,7 +339,8 @@ Cable's backup is an ordinary local backup, so Apple's rules apply:
   never passes.
 
 The end-to-end result of Cable's own `prepare` → `restore-backup` ordering
-hasn't been watched through on a real phone yet — see below.
+hasn't been watched through on a real phone yet — see
+[Not yet verified](#not-yet-verified).
 
 ## Known limits
 

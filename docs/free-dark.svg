@@ -1,0 +1,132 @@
+<!-- free.svg with the colours swapped for GitHub's dark theme. Edit free.svg and
+     redo the swap rather than editing this one. -->
+<svg xmlns="http://www.w3.org/2000/svg" class="diagram anim" viewBox="0 0 440 190" width="440" height="190" role="img"
+     aria-label="A person plugs an iPhone into a Mac and Instagram disappears from it. They walk off and spend the day outside with friends. They walk back, plug in again, and the app returns.">
+    <style>
+        .diagram { color: #e6edf3; }
+        .diagram .cap {
+            font: 12px -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            fill: #c9d1d9;
+            stroke: none;
+            text-anchor: middle;
+        }
+
+        /* One continuous 16s loop. The person walks; everything else snaps on or
+           off, so nothing cross-fades. */
+        .anim .walker  { animation: walk 16s linear infinite; }
+        .anim .cable   { animation: docked 16s linear infinite; }
+        .anim .appicon { animation: appicon 16s linear infinite; }
+        .anim .cap1    { animation: cap1 16s linear infinite; }
+        .anim .cap2    { animation: cap2 16s linear infinite; }
+        .anim .cap3    { animation: cap3 16s linear infinite; }
+        .anim .friends { animation: outside 16s linear infinite; }
+        .anim .jump    { animation: jump 0.62s ease-in-out infinite; }
+        .anim .jump2   { animation-delay: 0.31s; }
+
+        @keyframes walk {
+            0%, 25%       { transform: translateX(0) }
+            37.5%, 62.5%  { transform: translateX(150px) }
+            75%, 100%     { transform: translateX(0) }
+        }
+        /* Paired keyframes a hundredth apart give an instant cut, not a fade. */
+        @keyframes docked {
+            0%, 25%           { opacity: 1 }
+            25.01%, 74.99%    { opacity: 0 }
+            75%, 100%         { opacity: 1 }
+        }
+        @keyframes appicon {
+            0%, 12%           { opacity: 1 }
+            12.01%, 81%       { opacity: 0 }
+            81.01%, 100%      { opacity: 1 }
+        }
+        @keyframes cap1 {
+            0%, 24%           { opacity: 1 }
+            24.01%, 100%      { opacity: 0 }
+        }
+        @keyframes cap2 {
+            0%, 37.49%        { opacity: 0 }
+            37.5%, 62.5%      { opacity: 1 }
+            62.51%, 100%      { opacity: 0 }
+        }
+        @keyframes outside {
+            0%, 37.49%        { opacity: 0 }
+            37.5%, 62.5%      { opacity: 1 }
+            62.51%, 100%      { opacity: 0 }
+        }
+        @keyframes jump {
+            0%, 100%          { transform: translateY(0) }
+            50%               { transform: translateY(-9px) }
+        }
+        @keyframes cap3 {
+            0%, 76.99%        { opacity: 0 }
+            77%, 100%         { opacity: 1 }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .anim .walker, .anim .cable, .anim .appicon, .anim .friends,
+            .anim .jump, .anim .cap1, .anim .cap2, .anim .cap3 { animation: none; }
+            .anim .cap2, .anim .cap3, .anim .friends { opacity: 0; }
+        }
+    </style>
+    <defs>
+        <radialGradient id="ig" cx="28%" cy="104%" r="140%">
+            <stop offset="0%" stop-color="#fdf497"/>
+            <stop offset="8%" stop-color="#fdf497"/>
+            <stop offset="38%" stop-color="#fd5949"/>
+            <stop offset="58%" stop-color="#d6249f"/>
+            <stop offset="92%" stop-color="#285aeb"/>
+        </radialGradient>
+    </defs>
+    <g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+
+        <!-- The stage never changes: a Mac on the left, outside on the right. -->
+        <path d="M26 152 h388" stroke-dasharray="2 7"/>
+        <rect x="36" y="66" width="58" height="38" rx="3"/>
+        <path d="M28 110 h74"/>
+        <circle cx="352" cy="40" r="9"/>
+        <path d="M352 26 v-6 M352 54 v6 M366 40 h6 M338 40 h-6 M362 30 l4 -4 M342 50 l-4 4 M362 50 l4 4 M342 30 l-4 -4"/>
+        <path d="M400 152 v-34 M400 122 l-13 -14 M400 122 l13 -14 M400 134 l-10 -11 M400 134 l10 -11"/>
+
+        <!-- Cable: only there while docked, and it appears and vanishes instantly. -->
+        <path class="cable" d="M156 142 C 140 152, 118 130, 102 112"/>
+        <rect class="cable" x="98" y="108" width="8" height="8" rx="1"/>
+
+        <!-- Friends, only there while he's outside. -->
+        <g class="friends">
+            <g class="jump">
+                <circle cx="232" cy="96" r="8"/>
+                <path d="M232 104 v22"/>
+                <path d="M232 110 l-13 -11 M232 110 l13 -11"/>
+                <path d="M232 126 l-9 20 M232 126 l9 20"/>
+            </g>
+            <g class="jump jump2">
+                <circle cx="358" cy="98" r="8"/>
+                <path d="M358 106 v22"/>
+                <path d="M358 112 l-13 -11 M358 112 l13 -11"/>
+                <path d="M358 128 l-9 18 M358 128 l9 18"/>
+            </g>
+        </g>
+
+        <!-- The person and their phone move together. -->
+        <g class="walker">
+            <circle cx="140" cy="84" r="9"/>
+            <path d="M140 93 v27"/>
+            <path d="M140 100 l-14 9 M140 100 l16 6"/>
+            <path d="M140 120 l-10 26 M140 120 l10 26"/>
+            <rect x="152" y="100" width="24" height="40" rx="4"/>
+            <path d="M158 134 h12"/>
+            <!-- The actual Instagram icon, so it's unmistakable which app
+                 disappears. Redrawn rather than hotlinking Meta's asset. -->
+            <g class="appicon">
+                <rect x="155" y="106" width="18" height="18" rx="5" fill="url(#ig)" stroke="none"/>
+                <rect x="158" y="109" width="12" height="12" rx="3.6" fill="none" stroke="#fff" stroke-width="1.2"/>
+                <circle cx="164" cy="115" r="2.9" fill="none" stroke="#fff" stroke-width="1.2"/>
+                <circle cx="168.1" cy="110.9" r="0.85" fill="#fff" stroke="none"/>
+            </g>
+        </g>
+
+        <text class="cap cap1" x="220" y="178">Plug in. Pick the apps.</text>
+        <text class="cap cap2" x="220" y="178">Go about your day</text>
+        <text class="cap cap3" x="220" y="178">Plug in again — it's back</text>
+    </g>
+</svg>
