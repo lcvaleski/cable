@@ -207,8 +207,7 @@
             .paid .ask, .paid .reply, .paid .ig-back, .paid .clk,
             .paid .pcap2, .paid .pcap3, .paid .pcap4, .paid .pcap5 { opacity: 0; }
         }
-        .tiers h2:not(:first-child) { margin-top: 28px; }
-        .once { font-weight: normal; font-size: 13px; color: #0000EE; margin-left: 8px; vertical-align: middle; }
+        .tiers svg + h2 { margin-top: 28px; }
 
         footer {
             max-width: 480px;
@@ -254,7 +253,8 @@
 
 
         <section class="tiers">
-            <h2>Free</h2>
+            <p>Two ways to use it. Both free.</p>
+            <h2>Plug in to undo</h2>
             <svg class="diagram anim" viewBox="0 0 440 190" role="img"
                  aria-label="A person plugs an iPhone into a Mac and Instagram disappears from it. They walk off and spend the day outside with friends. They walk back, plug in again, and the app returns.">
                 <defs>
@@ -320,7 +320,7 @@
                 </g>
             </svg>
 
-            <h2>Paid <span class="once">One time payment!</span></h2>
+            <h2>Wait to undo</h2>
             <svg class="diagram paid" viewBox="0 0 440 190" role="img"
                  aria-label="Instagram is gone from the phone and your Mac can no longer undo it. You ask from the phone, a timer counts down, the password arrives from Cable, you type it in and the app comes back.">
                 <defs>

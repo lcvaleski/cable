@@ -1,4 +1,4 @@
-<!-- The "Paid" animation from site/index.html, standalone so the README can show
+<!-- The "Wait to undo" animation from site/index.html, standalone so the README can show
      it. Change them together. paid-dark.svg is this file with the colours
      swapped for GitHub's dark theme. -->
 <svg xmlns="http://www.w3.org/2000/svg" class="diagram paid" viewBox="0 0 440 190" width="440" height="190" role="img"

@@ -21,7 +21,9 @@ MIT licensed. Every line is in this repo.
 [cableblocker.com](https://cableblocker.com) ·
 [Releases](https://github.com/lcvaleski/cable/releases)
 
-## Free
+Two ways to use it. Both free.
+
+## Plug in to undo
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/free-dark.svg">
@@ -30,9 +32,7 @@ MIT licensed. Every line is in this repo.
 
 Plug in. Pick the apps. Go about your day. Plug in again and it's back.
 
-## Paid
-
-One time payment!
+## Wait to undo
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="docs/paid-dark.svg">
